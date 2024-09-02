@@ -1,0 +1,16 @@
+# This token defines rules for the bots authentication
+kind: token
+version: v2
+metadata:
+  name: github-actions-blog-demo
+spec:
+  roles: [Bot]
+  join_method: github
+  bot_name: github-actions-blog-demo
+  github:
+    allow:
+      # Access will only be granted to a GitHub Actions workflow
+      # running in the `strideynet/machine-id-github-actions-kubernetes-demo`
+      # repository.
+      - repository: strideynet/machine-id-github-actions-kubernetes-demo
+        # TODO: Limit access to CI running on the `main` branch.

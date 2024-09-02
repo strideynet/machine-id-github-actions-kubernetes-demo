@@ -1,0 +1,41 @@
+name: "Deploy!"
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-kubernetes:
+    name: Deploy Kubernetes manifests using Teleport Machine ID and Kubectl
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Kubectl
+        uses: azure/setup-kubectl@v3
+      - name: Install Teleport
+        uses: teleport-actions/setup@v1
+        with:
+          version: 16.2.0
+      - name: Authenticate with Teleport
+        # https://github.com/teleport-actions/auth-k8s
+        uses: teleport-actions/auth-k8s@v2
+        with:
+          # Specify the publically accessible address of your Teleport proxy.
+          proxy: noah.teleport.sh:443
+          # Specify the name of the join token for your bot.
+          token: github-actions-blog-demo
+          # Specify the length of time that the generated credentials should be
+          # valid for. This is optional and defaults to "1h".
+          # Here we've limited it to 10m as this CI job doesn't need longer.
+          certificate-ttl: 10m
+          # Specify the name of the Kubernetes cluster the credentials will be
+          # generated for.
+          kubernetes-cluster: gcp
+          # Enable submission of anonymous usage telemetry to Teleport.
+          # See https://goteleport.com/docs/machine-id/reference/telemetry/ for
+          # more information.
+          anonymous-telemetry: 1
+      - run: kubectl apply -f ./manifests/deployment.yaml
