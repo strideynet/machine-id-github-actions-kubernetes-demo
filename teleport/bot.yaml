@@ -1,0 +1,7 @@
+kind: bot
+version: v1
+metadata:
+  name: github-actions-blog-demo
+spec:
+  roles:
+    - github-actions-blog-demo
