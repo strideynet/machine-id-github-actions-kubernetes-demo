@@ -33,7 +33,7 @@ jobs:
           certificate-ttl: 10m
           # Specify the name of the Kubernetes cluster the credentials will be
           # generated for.
-          kubernetes-cluster: gcp
+          kubernetes-cluster: docker-desktop
           # Enable submission of anonymous usage telemetry to Teleport.
           # See https://goteleport.com/docs/machine-id/reference/telemetry/ for
           # more information.
