@@ -1,5 +1,5 @@
 kind: role
-version: v6
+version: v7
 metadata:
   name: github-actions-blog-demo
 spec:
