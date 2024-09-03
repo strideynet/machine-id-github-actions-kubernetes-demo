@@ -12,9 +12,9 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Kubectl
-        uses: azure/setup-kubectl@v3
+        uses: azure/setup-kubectl@v4
       - name: Install Teleport
         uses: teleport-actions/setup@v1
         with:
