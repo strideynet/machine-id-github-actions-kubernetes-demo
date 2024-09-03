@@ -13,4 +13,5 @@ spec:
       # running in the `strideynet/machine-id-github-actions-kubernetes-demo`
       # repository.
       - repository: strideynet/machine-id-github-actions-kubernetes-demo
-        # TODO: Limit access to CI running on the `main` branch.
+        ref_type: branch
+        ref: refs/heads/main
