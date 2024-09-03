@@ -1,0 +1,14 @@
+kind: role
+version: v6
+metadata:
+  name: github-actions-blog-demo
+spec:
+  allow:
+    kubernetes_labels:
+      '*': '*'
+    kubernetes_groups:
+      - github-ci
+    kubernetes_resources:
+      - kind: "*"
+        namespace: "*"
+        name: "*"
