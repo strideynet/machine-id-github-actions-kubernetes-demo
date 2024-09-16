@@ -6,6 +6,9 @@ metadata:
 rules:
   - apiGroups:
       - apps
+    # Restrict the role to Pods and Deployments, since that's what our CI
+    # system is updating. If your CI needs to create and modify other kinds,
+    # then this list should be expanded.
     resources:
       - pods
       - deployments

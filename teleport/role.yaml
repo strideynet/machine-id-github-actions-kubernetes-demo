@@ -4,10 +4,18 @@ metadata:
   name: github-actions-blog-demo
 spec:
   allow:
+    # Grant access to all the Kubernetes clusters enrolled into
+    # the Teleport cluster.
     kubernetes_labels:
       '*': '*'
+    # Specify which group should be impersonated when proxying requests
+    # to the Kubernetes cluster. This should match our RoleBinding configured
+    # inside Kubernetes.
     kubernetes_groups:
       - github-ci
+    # Specify which resources can be accessed through Teleport. In this example,
+    # we're using wildcards, but this can be used to apply additional restrictions
+    # on the resources granted by the Kubernetes Role.
     kubernetes_resources:
       - kind: "*"
         namespace: "*"

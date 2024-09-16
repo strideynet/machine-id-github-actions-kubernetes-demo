@@ -6,6 +6,7 @@ metadata:
 spec:
   roles: [Bot]
   join_method: github
+  # This is the name of the Bot that the join token will grant access to.
   bot_name: github-actions-blog-demo
   github:
     allow:
@@ -14,4 +15,6 @@ spec:
       # repository.
       - repository: strideynet/machine-id-github-actions-kubernetes-demo
         ref_type: branch
+        # Limit authentication only to GitHub Actions runs against the main
+        # branch.
         ref: refs/heads/main

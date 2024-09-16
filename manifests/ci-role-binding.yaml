@@ -5,9 +5,12 @@ metadata:
   namespace: github-actions-blog-demo
 subjects:
   - kind: Group
+    # This will match the `kubernetes_groups` in the Teleport role
+    # we will create later.
     name: github-ci
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
+  # This should match the name of the Role we just created.
   name: github-ci-deploy
   apiGroup: rbac.authorization.k8s.io
